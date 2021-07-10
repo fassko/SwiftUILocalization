@@ -1,21 +1,30 @@
-//
-//  ContentView.swift
-//  SwiftUILocalization
-//
-//  Created by Kristaps Grinbergs on 10/07/2021.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
+  @State var name = ""
+  @State var age = ""
+  
+  var body: some View {
+    NavigationView {
+      VStack(spacing: 20) {
+        Text("Hello, \(name)!")
+          .font(.largeTitle)
+        
+        TextField(LocalizedStringKey("Your name"), text: $name)
+          .multilineTextAlignment(.center)
+          .font(.title)
+        
+        Spacer()
+      }
     }
+    .navigationTitle("Greeting")
+  }
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+  static var previews: some View {
+    Group {
+      ContentView()
     }
+  }
 }
